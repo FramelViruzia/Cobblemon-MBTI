@@ -1,0 +1,10 @@
+.gradle/
+build/
+out/
+run/
+libs/
+.idea/
+*.iml
+.vscode/
+*.class
+__pycache__/
