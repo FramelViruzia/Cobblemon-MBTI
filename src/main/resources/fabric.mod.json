@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblemon_mbti",
+  "version": "${version}",
+  "name": "Cobblemon MBTI",
+  "description": "Shows each Pokémon's MBTI personality type next to the Nature row in Cobblemon's Summary screen, based on people's votes across MBTI communities",
+  "authors": [
+    "ViruziA"
+  ],
+  "contact": {
+    "homepage": "https://github.com/FramelViruzia/cobblemon-mbti",
+    "sources": "https://github.com/FramelViruzia/cobblemon-mbti",
+    "issues": "https://github.com/FramelViruzia/cobblemon-mbti/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.cobblemonmbti.CobblemonMbtiClient"
+    ]
+  },
+  "mixins": [
+    "cobblemon_mbti.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cobblemon": ">=1.7.3"
+  }
+}

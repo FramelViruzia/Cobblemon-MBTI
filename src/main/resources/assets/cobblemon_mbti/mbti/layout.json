@@ -1,0 +1,6 @@
+{
+  "_comment": "Position of the Nature value box in Cobblemon's Summary > Info tab, in GUI pixels relative to the top-left corner of InfoWidget. A resource pack that redraws summary_info_base.png can ship this file at assets/cobblemon_mbti/mbti/layout.json to move the badge. right is the exclusive right edge.",
+  "nature_box_top": 65,
+  "nature_box_height": 11,
+  "nature_box_right": 129
+}
