@@ -4,6 +4,7 @@ Client-side Fabric mod that shows each Pokémon's **MBTI type** at the right end
 Summary. Yes, only showing; nothing too fancy about it.
 
 For Minecraft version 1.21.1 with Fabric.
+
 Supports Cobblemon 1.7.3+ (not tested with older versions)
 
 # Feedback
