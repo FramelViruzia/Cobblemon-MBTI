@@ -36,7 +36,7 @@ public final class MbtiBadgeRenderer {
             MbtiLayout.Placement p = MbtiLayout.place(MbtiData.layout(), widgetX, widgetY, font.width(text),
                     cfg.badgeScale, cfg.textPaddingX, cfg.boxRightInset, cfg.offsetX, cfg.offsetY);
 
-            graphics.fill(p.left, p.top, p.right, p.bottom, 0xFF000000 | rgb);
+            fillBadge(graphics, p, rgb, cfg.boxRightInset == 0);
 
             PoseStack pose = graphics.pose();
             pose.pushPose();
@@ -48,6 +48,25 @@ public final class MbtiBadgeRenderer {
             failed = true;
             CobblemonMbtiClient.LOGGER.error("MBTI badge rendering failed and has been switched off until the next resource reload", t);
         }
+    }
+
+    /**
+     * Cobblemon rounds the Nature box's outer corners by painting each corner pixel halfway between the box and the
+     * background. When the badge is flush with that edge, its right corners get the same look: drawn at 50% alpha so
+     * they blend with whatever is behind them, including resource pack artwork.
+     */
+    private static void fillBadge(GuiGraphics graphics, MbtiLayout.Placement p, int rgb, boolean roundRightCorners) {
+        int opaque = 0xFF000000 | rgb;
+        if (!roundRightCorners || p.right - p.left < 2 || p.bottom - p.top < 3) {
+            graphics.fill(p.left, p.top, p.right, p.bottom, opaque);
+            return;
+        }
+        int edge = p.right - 1;
+        graphics.fill(p.left, p.top, edge, p.bottom, opaque);
+        graphics.fill(edge, p.top + 1, p.right, p.bottom - 1, opaque);
+        int half = 0x80000000 | rgb;
+        graphics.fill(edge, p.top, p.right, p.top + 1, half);
+        graphics.fill(edge, p.bottom - 1, p.right, p.bottom, half);
     }
 
     /** Lets /mbti reload re-enable rendering after a failure. */
